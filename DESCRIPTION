@@ -1,0 +1,9 @@
+Package: kwb.vs2dh
+Version: 0.1.9999
+Title: Interface to VS2DH
+Author: Michael Rustler
+Maintainer: Michael Rustler <michael.rustler@kompetenz-wasser.de>
+Description: Interface to the open-source model USGS model VS2DH for simulation of water and energy transport in variable-saturated porous media (for more information see: http://wwwbrr.cr.usgs.gov/projects/GW_Unsat/vs2di1.3/).
+Depends: R (>= 3.0.0), stringr, lattice, colorRamps, kwb.utils, kwb.db
+License: GPL (>=2)
+LazyLoad: yes

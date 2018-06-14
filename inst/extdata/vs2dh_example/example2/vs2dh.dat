@@ -1,0 +1,110 @@
+Verification Problem 1 in WRIR 96-4230, p. 5
+10765.0 0. 0.    /A2 -- TMAX, STIM, ANG
+m   sec J       /A3 -- ZUNIT, TUNIT, CUNX
+3 65    /A4 -- NXR, NLY
+1 1000    /A5 -- NRECH, NUMT
+F T T      /A6 -- RAD, ITSTOP, TRANS
+T T      /A6A -- CIS, CIT
+F F F F F     /A7 -- F11P, F7P, F8P, F9P, F6P
+F F T F F      /A8 -- THPT, SPNT, PPNT, HPNT, VPNT
+0 1     /A9 -- IFAC, FACX. A10 begins next line: DXR
+1.0 1.0 1.0
+0 1     /A11 -- JFAC, FACZ. A12 begins next line: DELZ
+1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 
+1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 
+1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 
+1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 
+1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 
+1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 
+1.0 1.0 1.0 1.0 1.0
+1.0E-4 0.7 0.5 1.0E-5 0.001     /B1 -- EPS, HMAX, WUS, EPS1, EPS2
+2 80     /B3 -- MINIT, ITMAX
+T     /B4 -- PHRD
+2 6 6     /B5 -- NTEX, NPROP, NPROP1
+1 1     /B5A -- hydraulicFunctionType, adsorptionType (not used)
+1     /B6 -- ITEX. B7 to begin next line: HK
+1.0 0.0 0.0 0.0 0.0 0.0 0.0
+0.0 0.0 0.0 0.0 0.0 0.0      /B7A -- HT
+2     /B6 -- ITEX. B7 to begin next line: HK
+1.0 1.389E-4 0.0 0.5 0.05 0.0 3.0
+10.0 10.0 2080000.0 1.8 1.8 4200000.0      /B7A -- HT
+0     /B8 -- IROW. B9 begins next line: JTEX
+1 1 1 
+1 2 1
+1 2 1
+1 2 1
+1 2 1
+1 2 1
+1 2 1
+1 2 1
+1 2 1
+1 2 1
+1 2 1
+1 2 1
+1 2 1
+1 2 1
+1 2 1
+1 2 1
+1 2 1
+1 2 1
+1 2 1
+1 2 1
+1 2 1
+1 2 1
+1 2 1
+1 2 1
+1 2 1
+1 2 1
+1 2 1
+1 2 1
+1 2 1
+1 2 1
+1 2 1
+1 2 1
+1 2 1
+1 2 1
+1 2 1
+1 2 1
+1 2 1
+1 2 1
+1 2 1
+1 2 1
+1 2 1
+1 2 1
+1 2 1
+1 2 1
+1 2 1
+1 2 1
+1 2 1
+1 2 1
+1 2 1
+1 2 1
+1 2 1
+1 2 1
+1 2 1
+1 2 1
+1 2 1
+1 2 1
+1 2 1
+1 2 1
+1 2 1
+1 2 1
+1 2 1
+1 2 1
+1 2 1
+1 2 1
+1 1 1 
+0 1.0     /B11 -- IREAD, FACTOR
+F F      /B14 -- BCIT, ETSIM
+0 20.0     /B24 -- IREAD, FACTOR
+10765.0 107.65     /C1 -- TPER, DELT (Recharge Period 1)
+1.0 107.65 0.001 0.1     /C2 -- TMLT, DLTMX, DLTMIN, TRED
+100.0 0.0     /C3 -- DSMAX, STERR
+100.0     /C4 -- POND
+F     /C5 -- PRNT
+F F F     /C6 -- BCIT, ETSIM, SEEP
+0     /C10 -- IBC. C11 begins next line: JJ, NN, NTX, PFDUM, (NTC, CF)
+2 2 1 1.0 1 21.0
+64 2 1 1.0 0 20.0
+-999999 / C13 -- End of data for recharge period 1
+-999999 / End of input data file
