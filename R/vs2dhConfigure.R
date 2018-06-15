@@ -240,7 +240,7 @@ vs2dh.ConfigureBoundaryFluxes <- function (nodes = NULL) {
   if (is.data.frame(nodes)) {
     if(nrow(nodes) > 0)
     { 
-      bf <- aggregate(bf_j ~ idbf, nodes,length)
+      bf <- stats::aggregate(bf_j ~ idbf, nodes,length)
       names(bf)[names(bf) == "bf_j"] <- "numcells"
       
       numbf <- nrow(bf)

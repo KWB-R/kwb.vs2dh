@@ -159,13 +159,15 @@ vs2dh.plotObservationPoints <- function(paras="Temp",
   {
     index <- which(paras == para)
     mainLabel <- sprintf("%s distribution for observation points",paraLabel[index]) 
-    myFormula <- as.formula(sprintf("%s ~ XR_m + (-Z_m) | TIME_label", para))
-    print(lattice::levelplot(myFormula,
-                             data = data, 
-                             main = mainLabel,
-                             layout = c(1,1), 
-                             col.regions = colorRamps::blue2red(n = maxCol), 
-                             ...))
+    myFormula <- stats::as.formula(sprintf("%s ~ XR_m + (-Z_m) | TIME_label", para))
+    print(lattice::levelplot(
+      myFormula,
+      data = data, 
+      main = mainLabel,
+      layout = c(1, 1), 
+      col.regions = colorRamps::blue2red(n = maxCol), 
+      ...
+    ))
   }
 }
 
@@ -225,16 +227,19 @@ vs2dh.plotMassBalance <- function(paras=c("TOTAL__FLOW_IN",
   
   parasWithUnit <- sprintf("%s__%s", paras, paraUnit)
   
-  myFormula <- as.formula(sprintf("%s ~ TIME", paste(parasWithUnit, collapse = " + ")))
+  myFormula <- stats::as.formula(sprintf(
+    "%s ~ TIME", paste(parasWithUnit, collapse = " + ")
+  ))
   
-  print(lattice::xyplot(myFormula, 
-                        auto.key=list(points = FALSE, lines=TRUE), 
-                        data = data,
-                        type = "l",
-                        ylab = sprintf("Values ( %s )", available$paraUnitLabel[index]), 
-                        xlab = "Time (days)",
-                        main = mainLabel,
-                        ...
+  print(lattice::xyplot(
+    myFormula, 
+    auto.key = list(points = FALSE, lines = TRUE), 
+    data = data,
+    type = "l",
+    ylab = sprintf("Values ( %s )", available$paraUnitLabel[index]), 
+    xlab = "Time (days)",
+    main = mainLabel,
+    ...
   ))
 }
 
