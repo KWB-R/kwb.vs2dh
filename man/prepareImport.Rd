@@ -27,6 +27,9 @@ each recharge period)
 Helper function: prepareImport (imports and prepares input file)
 }
 \examples{
+\dontrun{
 model.path <- system.file("extdata", "vs2dh_example/tutorial2", package = "kwb.vs2dh")
 prepareImport(model.path)
+}
+
 }

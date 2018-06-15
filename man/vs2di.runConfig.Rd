@@ -41,6 +41,7 @@ Import & write VS2dh model results in R object
 Run configuration with VS2dh model
 }
 \examples{
+\dontrun{
 ### Testing import and writing functions with 
 ### Folder which contains the subfolders with the different models to test: 
 model.main.path <- system.file("extdata", "vs2dh_example", package = "kwb.vs2dh")
@@ -68,4 +69,5 @@ for (testModel in exampleModels)
                     )
   cat("Done!")
 } 
+}
 }

@@ -210,6 +210,7 @@ vs2di.run <- function(engine = "vs2dh",
 
 #' @return Import & write VS2dh model results in R object 
 #' @examples 
+#' \dontrun{
 #' ### Testing import and writing functions with 
 #' ### Folder which contains the subfolders with the different models to test: 
 #' model.main.path <- system.file("extdata", "vs2dh_example", package = "kwb.vs2dh")
@@ -237,14 +238,17 @@ vs2di.run <- function(engine = "vs2dh",
 #'                     )
 #'   cat("Done!")
 #' } 
-vs2di.runConfig <- function(conf, 
-                            engine = "vs2dh", 
-                            tDir = tempdir(), 
-                            returnOutput = TRUE, 
-                            openTargetDir = TRUE,
-                            showWarnings = TRUE,
-                            dbgRun = TRUE, 
-                            dbg = TRUE)
+#' }
+vs2di.runConfig <- function(
+  conf, 
+  engine = "vs2dh", 
+  tDir = tempdir(), 
+  returnOutput = TRUE, 
+  openTargetDir = TRUE,
+  showWarnings = TRUE,
+  dbgRun = TRUE, 
+  dbg = TRUE
+)
 {
   if (dbg == TRUE) cat("1.Step: creating target directory or delete all files in that folder ...")
   dir.create(tDir)

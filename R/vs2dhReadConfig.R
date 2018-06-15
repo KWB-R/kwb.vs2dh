@@ -182,13 +182,17 @@ multipleLineValues <- function (parName="DELZ",
 #' and values) and  "rechargePeriods" (summary of start/endlines of file "input" for 
 #' each recharge period)
 #' @examples
+#' \dontrun{
 #' model.path <- system.file("extdata", "vs2dh_example/tutorial2", package = "kwb.vs2dh")
 #' prepareImport(model.path)
-prepareImport   <- function (model.path ,
-                             mdb.path = system.file("extdata", 
-                                                    "InputDescription.xls", 
-                                                    package = "kwb.vs2dh"),
-                             dbg=TRUE
+#' }
+#' 
+prepareImport   <- function(
+  model.path ,
+  mdb.path = system.file(
+    "extdata", "InputDescription.xls", package = "kwb.vs2dh"
+  ),
+  dbg = TRUE
 )
 {
   filePath <- file.path(model.path,"vs2dh.dat")
