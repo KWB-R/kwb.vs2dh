@@ -1,3 +1,14 @@
+# cat_if -----------------------------------------------------------------------
+cat_if <- kwb.utils::catIf
+
+# this_extdata_file ------------------------------------------------------------
+this_extdata_file <- function(...)
+{
+  system.file("extdata", ..., package = "kwb.vs2dh")
+}
+
+# vs2di.createFileDat ----------------------------------------------------------
+
 #' Create vs2dh.fil or vs2dt.fil file  
 #' 
 #' @param engine model engine either 'vs2dh' or 'vs2dt'  
@@ -10,15 +21,14 @@
 #' vs2di.createFileDat(engine = "vs2dh", 
 #'                     model.path = model.path)
 
-vs2di.createFileDat <- function(engine,
-                                model.path,
-                                dbg=TRUE) {
- 
-  fileNames = list(
+vs2di.createFileDat <- function(engine, model.path, dbg = TRUE)
+{
+  fileNames <- list(
     boundaryFluxes = "boundaryFluxes.out", 
     variables = "variables.out", 
     balance = "balance.out",
-    obsPoints = "obsPoints.out")
+    obsPoints = "obsPoints.out"
+  )
   
   allFileNames <- c(
     sprintf("%s.dat", engine), 
@@ -32,25 +42,18 @@ vs2di.createFileDat <- function(engine,
   
   txt <- paste(allFileNames, collapse = "\n")
   
-  if (dbg == TRUE) 
-  {
-    cat(sprintf("Write/Overwrite %s.fil in folder:\n%s\n", 
-                engine,
-                model.path))
-  }
+  cat_if(dbg, sprintf(
+    "Write/Overwrite %s.fil in folder:\n%s\n", engine, model.path
+  ))
   
-  write(x = txt, file = file.path(model.path, 
-                                  sprintf("%s.fil", engine)))
+  write(x = txt, file = file.path(model.path, sprintf("%s.fil", engine)))
   
-  if (dbg == TRUE)
-  {
-    cat("Done!\n\n")
-    cat("Output files:\n")
-    cat(sprintf("Variables: %s\nMass balance: %s\nObservation points: %s\n\n", 
-                fileNames$variables,
-                fileNames$balance,
-                fileNames$obsPoints))
-  }
+  cat_if(dbg, "Done!\n\n")
+  cat_if(dbg, "Output files:\n")
+  cat_if(dbg, sprintf(
+    "Variables: %s\nMass balance: %s\nObservation points: %s\n\n", 
+    fileNames$variables, fileNames$balance, fileNames$obsPoints
+  ))
 }
 
 #' Helper function: converts string to windows path 
@@ -62,14 +65,9 @@ vs2di.createFileDat <- function(engine,
 #' winPath <- convertToWindowsPath(path=unixPath)
 #' winPath
 
-convertToWindowsPath <- function(path, 
-                                 sep = "\\/"
-)
+convertToWindowsPath <- function(path, sep = "\\/")
 {
-  windowsPath <- gsub(pattern = sep, 
-                      replacement = "\\\\", 
-                      x = path)
-  return(windowsPath)
+  gsub(pattern = sep, replacement = "\\\\", x = path)
 }
 
 #' Helper function: checks whether operating system is windows or linux 
@@ -79,14 +77,9 @@ convertToWindowsPath <- function(path,
 #' os ### return operating system
 
 checkOperatingSystem <- function()
-  if (exists("shell")) 
-  {
-    os <- "windows"
-  } else {
-    os <- "linux"
-    
-    return(os)
-  }
+{
+  ifelse(exists("shell"), "windows", "linux")
+}
 
 #' Run VS2dh model 
 #' 
@@ -112,79 +105,82 @@ checkOperatingSystem <- function()
 #' model.path <- system.file("extdata", "vs2dh_example/tutorial2", package = "kwb.vs2dh")
 #' res <- vs2di.run(model.path = model.path)
 
-vs2di.run <- function(engine = "vs2dh", 
-                      engineDirectoryWin = system.file("extdata/engine/win", 
-                                                       package = "kwb.vs2dh"), #"C:/Program Files (x86)/USGS/VS2DI_1.3/bin",
-                      engineDirectoryLinux = system.file("extdata/engine/linux", 
-                                                         package = "kwb.vs2dh"),
-                      model.path = system.file("extdata", "vs2dh_example/tutorial2", 
-                                               package = "kwb.vs2dh"),
-                      returnOutput = TRUE, 
-                      showWarnings = TRUE,
-                      openTargetDir = FALSE, 
-                      dbg=TRUE)
-  
+vs2di.run <- function(
+  engine = "vs2dh", 
+  engineDirectoryWin = this_extdata_file("engine/win"), 
+  #"C:/Program Files (x86)/USGS/VS2DI_1.3/bin",
+  engineDirectoryLinux = this_extdata_file("engine/linux"),
+  model.path = this_extdata_file("vs2dh_example/tutorial2"),
+  returnOutput = TRUE, 
+  showWarnings = TRUE,
+  openTargetDir = FALSE, 
+  dbg = TRUE
+)
 { 
   #### Compilte Fortran code
   ### gfortran vs2dh.f -o vs2dh.exe -I/home/micha/RPackages/kwb.vs2dh/src 
   ###engine.path <- "/home/micha/RPackages/kwb.vs2dh/inst/extdata/vs2dh.exe"
   
-  if (dbg == TRUE) cat(sprintf("1. Step: Create %s.fil...", engine))
-  vs2di.createFileDat(engine = engine, 
-                      model.path = model.path, 
-                      dbg = FALSE)
-  if (dbg == TRUE) cat("Done!\n\n")
+  cat_if(dbg, sprintf("1. Step: Create %s.fil...", engine))
+  
+  vs2di.createFileDat(engine = engine, model.path = model.path, dbg = FALSE)
+  
+  cat_if(dbg, "Done!\n\n")
   
   engineExecutable <- sprintf("%s3_3.exe", engine)
+  
   cmd <- sprintf('cd %s & "%s"', model.path, file.path(engineDirectoryWin, engineExecutable))
-  if (dbg == TRUE) cat("\n2. Step: Run model...")
   
-  os <- checkOperatingSystem()
-  if (os == "windows") 
-  {
-    cmd <- convertToWindowsPath(cmd)
-    runTime <- system.time(shell(cmd))
-  } else 
-  {
+  cat_if(dbg, "\n2. Step: Run model...")
+  
+  runTime <- system.time(if (checkOperatingSystem() == "windows") {
+    shell(convertToWindowsPath(cmd))
+  } else {
     ### OS is Linux 
-    runTime <- system.time(system(cmd))
-  }
+    system(cmd)
+  })
+
+  cat_if(dbg, sprintf("finished after %4.1f seconds\n", runTime[3]))
   
-  if (dbg == TRUE) cat(sprintf("finished after %4.1f seconds\n", runTime[3]))
+  cat_if(dbg && returnOutput, "\n4. Step: Import model results...")
   
-  if (dbg == TRUE & returnOutput == TRUE) cat("\n4. Step: Import model results...")
-  if (returnOutput == TRUE)
-  {
+  if (returnOutput) {
     output <- list(
-      main = vs2di.readMain(model.path = model.path,
-                            engine = engine),
+      main = vs2di.readMain(model.path = model.path, engine = engine),
       boundaryFluxes = vs2dh.readBoundaryFluxes(model.path),
       variables = vs2dh.readVariables(model.path), 
-      balance = vs2di.readBalance(model.path = model.path,
-                                  engine = engine),
+      balance = vs2di.readBalance(model.path = model.path, engine = engine),
       obsPoints = vs2dh.readObsPoints(model.path)
     )
   }
-  if (dbg == TRUE & returnOutput == TRUE) cat("Done!\n")
-  if (showWarnings == TRUE) 
-  {
+  
+  cat_if(dbg && returnOutput, "Done!\n")
+  
+  if (showWarnings == TRUE) {
     
     warnings <- vs2di.readMain(model.path, engine)$warnings
-    anyWarnings <- any(grepl(pattern = "WARNING|EXCEEDED PERMITTED", warnings) == TRUE)
-    if (anyWarnings) 
-    {
+    anyWarnings <- any(grepl(pattern = "WARNING|EXCEEDED PERMITTED", warnings))
+    
+    if (anyWarnings) {
+      
       cat("\nPrint warnings during simulation (vs2dh.out):\n")
       cat(warnings)
+      
     } else {
+      
       cat("\nNo warnings during simulation (vs2dh.out)\n")
     }
   }
-  if (openTargetDir == TRUE) 
-  {
+  
+  if (openTargetDir) {
+    
     kwb.utils::hsOpenWindowsExplorer(model.path)
   }
   
-  if (returnOutput == TRUE) return(output)
+  if (returnOutput) {
+    
+    return(output)
+  }
 }
 
 #' Run configuration with VS2dh model  
@@ -207,7 +203,6 @@ vs2di.run <- function(engine = "vs2dh",
 #' @param dbgRun if true text output on screen on model run progress
 #' @param dbg if true text output on screen on additional model run progress
 #' 
-
 #' @return Import & write VS2dh model results in R object 
 #' @examples 
 #' \dontrun{
@@ -250,36 +245,43 @@ vs2di.runConfig <- function(
   dbg = TRUE
 )
 {
-  if (dbg == TRUE) cat("1.Step: creating target directory or delete all files in that folder ...")
+  # shortcut to kwb.utils::catIf
+  cat_if <- kwb.utils::catIf
+  
+  cat_if(dbg, "1.Step: creating target directory or delete all", 
+                   "files in that folder ...")
+  
   dir.create(tDir)
   unlink( file.path(tDir, "*"), recursive = FALSE)
   tPath <- file.path(tDir, sprintf("%s.dat", engine) )
-  if (dbg == TRUE) 
-  {
-    cat("Done!\n")
-    cat("2.Step: convert R configuration to FORTRAN style...")
-  }
+  
+  cat_if(dbg, "Done!\n")
+  cat_if(dbg, "2.Step: convert R configuration to FORTRAN style...")
+  
   inpDat <- vs2dh.writeConfig(conf)  
-  if (dbg == TRUE) 
-  {
-    cat("Done!\n")
-    cat(sprintf("3.Step: writing configuration to '%s'....", tPath))
-  }
+  
+  cat_if(dbg, "Done!\n")
+  cat_if(dbg, sprintf(
+    "3.Step: writing configuration to '%s'....", tPath
+  ))
+  
   write(inpDat, tPath)
+
+  cat_if(dbg, "Done!\n")
+  cat_if(dbg, sprintf(
+    "3.Step: Running vs2dh model in '%s'....", tPath
+  ))
   
+  res <- vs2di.run(
+    engine = engine, 
+    model.path = tDir,
+    returnOutput = returnOutput,
+    openTargetDir = openTargetDir,
+    showWarnings = showWarnings, 
+    dbg = dbgRun
+  )
   
-  if (dbg == TRUE)  
-  {
-    cat("Done!\n")
-    cat(sprintf("3.Step: Running vs2dh model in '%s'....", tPath))
-  }
-  res <- vs2di.run(engine = engine, 
-                   model.path = tDir,
-                   returnOutput = returnOutput,
-                   openTargetDir = openTargetDir,
-                   showWarnings = showWarnings, 
-                   dbg = dbgRun)
+  cat_if(dbg, "Done!\n")
   
-  if (dbg == TRUE) cat("Done!\n")
-  return(res)
+  res
 }
