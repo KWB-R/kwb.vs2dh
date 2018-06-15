@@ -10,38 +10,41 @@
 #' model.path <- system.file("extdata", "vs2dh_example/tutorial2", package = "kwb.vs2dh")
 #' vs2dh.readBoundaryFluxes(model.path)
 
-vs2dh.readBoundaryFluxes <- function (model.path,
-                                      fileName="boundaryFluxes.out",
-                                      dbg=TRUE
+vs2dh.readBoundaryFluxes <- function(
+  model.path, fileName = "boundaryFluxes.out", dbg = TRUE
 )
 {
-  filePath <- file.path(model.path,fileName)
+  boundaryFluxes <- readLines(file.path(model.path, fileName))
   
-  boundaryFluxes <- readLines(filePath)
-  if (length(boundaryFluxes) > 0)
-  {
-    header <- boundaryFluxes[1:3]
-    header[3] <- gsub(pattern="TIME STEP", replacement = "TIMESTEP", boundaryFluxes[3])
-    headerSplit <- strsplit(header, split = "\\s+")
+  if (length(boundaryFluxes) == 0) {
     
-    header1 <- c("TIME", "bID")
-    header2 <- paste0(headerSplit[[1]][4:9], "_", headerSplit[[2]][3:8], "_", headerSplit[[3]][2:7])
-    header <- c(header1,  header2)
-    
-    body <- boundaryFluxes[4:length(boundaryFluxes)]
-    
-    body <- convertStringVectorToMatrix(values = body,splitSep = "\\s+",toNumeric = FALSE)
-    
-    body <- as.data.frame(body[,c(2:ncol(body))])
-    
-    names(body) <- header
-    
-    return(body)
-  } else {
     return(NULL)
   }
+  
+  header <- boundaryFluxes[1:3]
+  
+  header[3] <- gsub("TIME STEP", "TIMESTEP", boundaryFluxes[3])
+  
+  headerSplit <- strsplit(header, split = "\\s+")
+  
+  header1 <- c("TIME", "bID")
+  
+  header2 <- paste0(
+    headerSplit[[1]][4:9], "_", 
+    headerSplit[[2]][3:8], "_", 
+    headerSplit[[3]][2:7]
+  )
+  
+  header <- c(header1, header2)
+  
+  body <- boundaryFluxes[4:length(boundaryFluxes)]
+  
+  body <- convertStringVectorToMatrix(
+    values = body, splitSep = "\\s+", toNumeric = FALSE
+  )
+  
+  stats::setNames(as.data.frame(body[, c(2:ncol(body))]), nm = header)
 }
-
 
 #' Read VS2dh model output file with observation point time series
 #' 
