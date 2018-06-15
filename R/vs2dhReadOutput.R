@@ -57,51 +57,38 @@ vs2dh.readBoundaryFluxes <- function(
 #' ### Location of example vs2dh model contained in "kwb.vs2dh package"
 #' model.path <- system.file("extdata", "vs2dh_example/tutorial2", package = "kwb.vs2dh")
 #' vs2dh.readObsPoints(model.path)
-
-vs2dh.readObsPoints <- function (model.path,
-                                 fileName="obsPoints.out",
-                                 dbg=TRUE
+vs2dh.readObsPoints <- function(
+  model.path, fileName = "obsPoints.out", dbg = TRUE
 )
 {
-  filePath <- file.path(model.path,fileName)
+  obsPoints <- readLines(file.path(model.path, fileName))
   
-  obsPoints <- readLines(filePath)
-  
-  if (length( obsPoints) > 0)
-  {
+  if (length(obsPoints) == 0) {
     
-    header <- obsPoints[3]
-    
-    # HS: You may use kwb.utils::multiSubstitute:
-    #
-    #   header <- multiSubstitute(
-    #     strings = header,
-    #     replacements = list(
-    #       ",\\s+" = "_",
-    #       "\\s+" = ","
-    #     )
-    #   )
-    
-    header <- gsub(pattern = ",\\s+",replacement = "_",x =  header)
-    header <- gsub(pattern = "\\s+",replacement = ",",x =  header)
-    
-    # HS: is it important to use sub here instead of gsub?
-    header <- sub(pattern = ",", replacement = "", x = header) 
-    header <-  strsplit(x = header,split = ",")[[1]]
-    
-    body <- obsPoints[4:length(obsPoints)]
-    body <- gsub(pattern = "[[:space:]]+",replacement = ",",x =  body)
-    body <- sub(pattern = ",", replacement = "", x = body) 
-    body <-  strsplit(x = body,split = ",")
-    
-    obs <- as.data.frame(matrix(as.numeric(unlist(body)), nrow=length(body), byrow=T))
-    
-    colnames(obs) <- header
-    
-    return(obs)
-  } else {
     return(NULL)
   }
+  
+  header <- obsPoints[3]
+  
+  header <- kwb.utils::multiSubstitute(header, list(
+    ",\\s+" = "_",
+    "\\s+" = ","
+  ))
+  
+  header <- sub(pattern = ",", replacement = "", x = header)
+  
+  header <- strsplit(x = header,split = ",")[[1]]
+  
+  body <- obsPoints[4:length(obsPoints)]
+  body <- gsub(pattern = "[[:space:]]+", replacement = ",", x =  body)
+  body <- sub(pattern = ",", replacement = "", x = body) 
+  body <- strsplit(x = body, split = ",")
+  
+  stats::setNames(nm = header, as.data.frame(matrix(
+    as.numeric(unlist(body)), 
+    nrow = length(body), 
+    byrow = TRUE
+  )))
 }
 
 #' Helper function: splits header of output file with (energy, fluid) mass 
