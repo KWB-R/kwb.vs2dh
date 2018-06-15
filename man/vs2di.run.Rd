@@ -5,11 +5,11 @@
 \title{Run VS2dh model}
 \usage{
 vs2di.run(engine = "vs2dh",
-  engineDirectoryWin = system.file("extdata/engine/win", package =
-  "kwb.vs2dh"), engineDirectoryLinux = system.file("extdata/engine/linux",
-  package = "kwb.vs2dh"), model.path = system.file("extdata",
-  "vs2dh_example/tutorial2", package = "kwb.vs2dh"), returnOutput = TRUE,
-  showWarnings = TRUE, openTargetDir = FALSE, dbg = TRUE)
+  engineDirectoryWin = this_extdata_file("engine/win"),
+  engineDirectoryLinux = this_extdata_file("engine/linux"),
+  model.path = this_extdata_file("vs2dh_example/tutorial2"),
+  returnOutput = TRUE, showWarnings = TRUE, openTargetDir = FALSE,
+  dbg = TRUE)
 }
 \arguments{
 \item{engine}{model engine 'vs2dh' (for flow & heat modelling) or 'vs2dt' (for 
