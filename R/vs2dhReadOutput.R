@@ -102,17 +102,7 @@ splitHeader <- function (row, header)
 {
   tmp <- as.vector(strsplit(x = header[[row]], split = "\\s+"))[[1]]
   
-  # HS: 
-  # start <- ifelse(row == 1, 2, 1)
-  
-  start <- 1
-  if (row==1) start <- 2
-  
-  end <- length(tmp)
-  
-  tmp <- tmp[start:end]
-  
-  return(tmp)
+  tmp[seq(from = ifelse(row == 1, 2, 1), to = length(tmp))]
 }
 
 #' Read VS2dh model output file with (energy, fluid) mass balance time series 
@@ -130,96 +120,61 @@ splitHeader <- function (row, header)
 #' model.path <- file.path(wDir, "extdata/vs2dh_example/tutorial2")
 #' res <- vs2di.run(model.path = model.path) 
 #' vs2di.readBalance(model.path = model.path, engine = "vs2dh")
-
-vs2di.readBalance <- function(model.path,
-                               engine,
-                               fileName="balance.out",
-                               dbg=TRUE
+#' 
+vs2di.readBalance <- function(
+  model.path, engine, fileName = "balance.out", dbg = TRUE
 )
 {
   if (engine != "vs2dh") {
-    msg <- "Import function only working with 'vs2dh' model currently!"
-    return(msg)
-    stop(msg)
+    
+    return("Import function only working with 'vs2dh' model currently!")
   }
   
-  filePath <- file.path(model.path,fileName)
+  balance <- readLines(file.path(model.path, fileName))
   
-  balance <- readLines(filePath)
-  if (length(balance) > 0)
-  {
-    header <- balance[1:3]
-    header[3] <-  gsub(pattern = "TIME STEP",replacement = "TIMESTEP",x =  header[3])
+  if (length(balance) == 0) {
     
-    # HS: here you do what kwb.utils::multiSubstitute does
-    
-    paras <- data.frame(pattern = c("VOL ", "SP\\s*", "ENERGY ", "FLOW "),
-                        replacement  = c("VOL_", "SP_", "ENERGY_", "FLOW_"))
-    for (index in 1:nrow(paras))
-    {
-      header[2] <- gsub(pattern = paras$pattern[index], 
-                        replacement = paras$replacement[index],
-                        x =  header[2]
-      )
-    }
-    
-    #header[2] <- multiSubstitute(
-    #  header[2], 
-    #  replacements = list(
-    #    "VOL" = "VOL_",
-    #    "SP\\s*" = "SP_", 
-    #    "ENERGY" = "ENERGY_", 
-    #    "FLOW" = "FLOW_"
-    #  )
-    #)
-    
-    paras <- data.frame(pattern = c("FLOW ", 
-                                  "ENERGY IN", 
-                                  "ENERGY OUT", 
-                                  "TRANS\\s*-", 
-                                  "EVAP\\s*-", 
-                                  "EVAP\\s*\\+"),
-                        replacement = c("FLOW_", 
-                                      "ENERGY_IN_", 
-                                      "ENERGY_OUT_", 
-                                      "TRANSPIRATION", 
-                                      "EVAPORATION", 
-                                      "EVAP_plus_TRANS")
-    )
-    
-    # HS: Michael, do not copy and paste!!! Again, use multiSubstitute
-    for (index in 1:nrow(paras))
-    {
-      header[1] <- gsub(pattern = paras$pattern[index], 
-                        replacement = paras$replacement[index],
-                        x =  header[1])
-    }
-    
-    
-    header1 <- splitHeader(row = 1, 
-                           header = header)
-    header2 <- splitHeader(row = 2, 
-                           header = header)
-    header2 <- gsub(pattern = "PIRATION|ORATION", 
-                    replacement = "", 
-                    header2)
-    
-    header3 <- splitHeader(row = 3, header = header)
-    
-    headerLabel <- paste(header1, header2, header3,sep = "__")
-    headerLabel[1] <- "TIME"
-    
-    body <- balance[4:length(balance)]
-    body <- gsub(pattern = "\\s+",replacement = ",",x =  body)
-    body <- sub(pattern = ",", replacement = "", x = body) 
-    body <-  strsplit(x = body,split = ",")
-    
-    bal <- as.data.frame(matrix(as.numeric(unlist(body)), nrow = length(body), byrow=T))
-    colnames(bal) <- headerLabel
-    return(bal)
-  } else {
     return(NULL)
   }
+  
+  header <- balance[1:3]
+  
+  header[3] <- gsub("TIME STEP", "TIMESTEP", header[3])
+  
+  header[2] <- kwb.utils::multiSubstitute(header[2], replacements = list(
+    "VOL " = "VOL_",
+    "SP\\s*" = "SP_",
+    "ENERGY " = "ENERGY_",
+    "FLOW " = "FLOW_"
+  ))
+  
+  header[1] <- kwb.utils::multiSubstitute(header[1], replacements = list(
+    "FLOW " = "FLOW_", 
+    "ENERGY IN" = "ENERGY_IN_", 
+    "ENERGY OUT" = "ENERGY_OUT_", 
+    "TRANS\\s*-" = "TRANSPIRATION", 
+    "EVAP\\s*-" = "EVAPORATION", 
+    "EVAP\\s*\\+" = "EVAP_plus_TRANS"
+  ))
+  
+  header1 <- splitHeader(row = 1, header = header)
+  header2 <- splitHeader(row = 2, header = header)
+  header3 <- splitHeader(row = 3, header = header)
+  
+  header2 <- gsub("PIRATION|ORATION", "", header2)
+  
+  headerLabel <- paste(header1, header2, header3, sep = "__")
+  
+  headerLabel[1] <- "TIME"
+  
+  body <- balance[-(1:3)]
+  body <- gsub("\\s+", ",", body)
+  body <- sub(",", "", body) 
+  body <- strsplit(body, split = ",")
+  
+  stats::setNames(nm = headerLabel, as.data.frame(matrix(
+    as.numeric(unlist(body)), nrow = length(body), byrow = TRUE)
+  ))
 }
 
 #' Read VS2dh model output file with time series of variables pressure head and
@@ -236,62 +191,57 @@ vs2di.readBalance <- function(model.path,
 #' res <- vs2di.run(model.path = model.path)  
 #' vs2dh.readVariables(model.path)
 
-vs2dh.readVariables <- function(model.path,
-                                 fileName="variables.out",
-                                 dbg=TRUE
+vs2dh.readVariables <- function(
+  model.path, fileName = "variables.out", dbg = TRUE
 )
 {
-  filePath <- file.path(model.path,fileName)
+  variables <- readLines(file.path(model.path,fileName))
   
-  variables <- readLines(filePath)
-  
-  if (length(variables) > 0)
-  {
+  if (length(variables) == 0) {
     
-    out <- list()
-    
-    timeRows <- grep(pattern = "TIME", variables) 
-    out$TIME <- as.numeric(stringr::str_sub(string = variables[timeRows], 
-                                            start = 12, 
-                                            end = 24))
-    out$Unit <- stringr::str_sub(string = variables[timeRows], 
-                                 start = 25, 
-                                 end = stringr::str_length(variables[timeRows])-1)
-    
-    nTimes <- length(timeRows)
-    
-    ### data points for each time step
-    dataPerTime <- (length(variables) - 1 - nTimes*2 -  nTimes+1)/nTimes
-    
-    ### Backcalculated NLY parameter (could be directly read from vs2dh.dat!) 
-    ### division with two because two parameters "pressure head" & "temp" are 
-    ### saved at each time step
-    nly <- dataPerTime /2 
-    
-    var <- data.frame(ID = c(0,1),
-                      name = c("PressureHead", "Temp")
-    )
-    for (row in 1:nrow(var))
-    { 
-      counter <- 0 
-      
-      for (time in timeRows)
-      {
-        counter <- counter + 1
-        start <- time + 2 + var$ID[row] * nly
-        end <- start + nly - 1  
-        
-        resSplit <- strsplit(x = sub("\\s+", "", variables[start:end]), split = "\\s+")
-        resSplit <- matrix(as.numeric(unlist(resSplit)),nrow = nly,byrow = TRUE)
-        
-        out[[as.character(var$name[row])]][[counter]] <- resSplit
-      }
-    }
-    
-    return(out)
-  } else {
     return(NULL)
   }
+  
+  out <- list()
+  
+  timeRows <- grep(pattern = "TIME", variables)
+  
+  out$TIME <- as.numeric(stringr::str_sub(variables[timeRows], 12, 24))
+  
+  end <- stringr::str_length(variables[timeRows]) - 1
+  
+  out$Unit <- stringr::str_sub(variables[timeRows], 25, end)
+  
+  nTimes <- length(timeRows)
+  
+  ### data points for each time step
+  dataPerTime <- (length(variables) - 1 - nTimes * 2 - nTimes + 1) / nTimes
+  
+  ### Backcalculated NLY parameter (could be directly read from vs2dh.dat!) 
+  ### division with two because two parameters "pressure head" & "temp" are 
+  ### saved at each time step
+  nly <- dataPerTime / 2 
+  
+  var <- data.frame(ID = c(0, 1), name = c("PressureHead", "Temp"))
+  
+  for (row in seq_len(nrow(var))) { 
+    
+    counter <- 0 
+    
+    for (time in timeRows) {
+      
+      counter <- counter + 1
+      start <- time + 2 + var$ID[row] * nly
+      end <- start + nly - 1  
+      
+      resSplit <- strsplit(sub("\\s+", "", variables[start:end]), split = "\\s+")
+      resSplit <- matrix(as.numeric(unlist(resSplit)), nrow = nly, byrow = TRUE)
+      
+      out[[as.character(var$name[row])]][[counter]] <- resSplit
+    }
+  }
+  
+  out
 }
 
 #' Helper function: selects pattern contained in different lines of a string vector 
@@ -304,11 +254,15 @@ vs2dh.readVariables <- function(model.path,
 patternSelect <- function(pattern, data)
 {
   lines <- grep(pattern = pattern, x = data)
-  res <- data[lines]
-  df <- data.frame(lines = lines, 
-                   txt = res)
   
-  if (nrow(df) > 0) return(df)
+  if (length(lines)) {
+    
+    data.frame(lines = lines, txt = data[lines])  
+    
+  } else {
+    
+    NULL
+  } 
 }
 
 #' Read main VS2dh model output file "vs2dh.out"   
@@ -322,29 +276,23 @@ patternSelect <- function(pattern, data)
 #' model.path <- system.file("extdata", "vs2dh_example/tutorial2", package = "kwb.vs2dh")
 #' res <- vs2di.run(model.path = model.path)  
 #' vs2di.readMain(model.path = model.path, engine = "vs2dh")
-vs2di.readMain <- function(model.path,
-                            engine = "vs2dh") {
+vs2di.readMain <- function(model.path, engine = "vs2dh")
+{
+  main <- readLines(file.path(model.path, sprintf("%s.out", engine)))
   
-  fileName <- sprintf("%s.out", engine)
-  
-  filePath <- file.path(model.path,fileName)
-  
-  main <- readLines(filePath)
-  if (length(main) > 0)  
-  {
-    out <- list()
+  if (length(main) == 0) {
     
-    warn <- patternSelect(pattern = "DATA FOR RECHARGE PERIOD|WARNING|EXCEEDED", 
-                          data = main)
-    
-    warn <- warn[order(warn$lines),]
-    
-    out$warnings <- sprintf("Line: %6d ::: %s\n", as.numeric(warn$lines), warn$txt)
-    
-    return(out)
-  } else {
     return(NULL)
   }
+  
+  warn <- patternSelect(
+    pattern = "DATA FOR RECHARGE PERIOD|WARNING|EXCEEDED", 
+    data = main
+  )
+  
+  warn <- warn[order(warn$lines), ]
+  
+  list(
+    warnings = sprintf("Line: %6d ::: %s\n", as.numeric(warn$lines), warn$txt)
+  )
 } 
-
-
