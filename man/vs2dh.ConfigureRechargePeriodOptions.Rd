@@ -8,21 +8,23 @@ vs2dh.ConfigureRechargePeriodOptions(prnt = FALSE, rbcit = FALSE,
   retsim = FALSE, seepage = vs2dh.ConfigureSeepage())
 }
 \arguments{
-\item{prnt}{If TRUE, = T if heads, temperature, moisture contents, and/or 
-saturations are to be printed to file "vs2dt.out" after each time step; If 
-FALSE they are to be written to file "vs2dt.out" only at observation times and
-ends of recharge periods. (default: FALSE)}
+\item{prnt}{If TRUE, = T if heads, temperature, moisture contents, and/or
+saturations are to be printed to file "vs2dt.out" after each time step; If
+FALSE they are to be written to file "vs2dt.out" only at observation times
+and ends of recharge periods. (default: FALSE)}
 
-\item{rbcit}{NOT IMPLEMENTED YET!!!!!!! If TRUE evaporation is to be simulated 
-for this recharge period;if FALSE no evaporation is simulated for this recharge 
-period (default: FALSE)}
+\item{rbcit}{NOT IMPLEMENTED YET!!!!!!! If TRUE evaporation is to be
+simulated for this recharge period;if FALSE no evaporation is simulated for
+this recharge period (default: FALSE)}
 
-\item{retsim}{NOT IMPLEMENTED YET!!!!!!! If TRUE evapotanspiration (plant-root 
-extraction) is to be simulated for this recharge period; if FALSE no evaporation is simulated for 
-this recharge period (default: FALSE).}
+\item{retsim}{NOT IMPLEMENTED YET!!!!!!! If TRUE evapotanspiration
+(plant-root extraction) is to be simulated for this recharge period; if
+FALSE no evaporation is simulated for this recharge period (default:
+FALSE).}
 
-\item{seepage}{If TRUE are to be simulated for this recharge period; seepage face
-not simulated for this recharge period. (default: vs2dh.ConfigureSeepage())}
+\item{seepage}{If TRUE are to be simulated for this recharge period; seepage
+face not simulated for this recharge period. (default:
+vs2dh.ConfigureSeepage())}
 }
 \value{
 Recharge period

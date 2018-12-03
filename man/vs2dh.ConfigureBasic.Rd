@@ -4,9 +4,12 @@
 \alias{vs2dh.ConfigureBasic}
 \title{Configure basic model parameters}
 \usage{
-vs2dh.ConfigureBasic(titl = "My title", units = vs2dh.ConfigureBasicUnits(),
-  time = vs2dh.ConfigureBasicTime(), output = vs2dh.ConfigureBasicOutput(),
-  solver = vs2dh.ConfigureBasicSolver(), grid = vs2dh.ConfigureBasicGrid(),
+vs2dh.ConfigureBasic(titl = "My title",
+  units = vs2dh.ConfigureBasicUnits(),
+  time = vs2dh.ConfigureBasicTime(),
+  output = vs2dh.ConfigureBasicOutput(),
+  solver = vs2dh.ConfigureBasicSolver(),
+  grid = vs2dh.ConfigureBasicGrid(),
   options = vs2dh.ConfigureBasicOptions())
 }
 \arguments{
@@ -22,8 +25,8 @@ vs2dh.ConfigureBasic(titl = "My title", units = vs2dh.ConfigureBasicUnits(),
 
 \item{grid}{retrieved by vs2dh.ConfigureBasicGrid()}
 
-\item{options}{as simulation options as retrieved by vs2dh.ConfigureBasicOptions
-(default: TRUE)}
+\item{options}{as simulation options as retrieved by
+vs2dh.ConfigureBasicOptions (default: TRUE)}
 }
 \value{
 Basic configuration

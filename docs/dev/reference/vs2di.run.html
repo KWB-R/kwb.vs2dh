@@ -79,7 +79,12 @@
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/KWB-R/kwb.vs2dh/">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -93,7 +98,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Run VS2dh model</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/KWB-R/kwb.vs2dh//blob/master/R/vs2dhRunModel.R'><code>R/vs2dhRunModel.R</code></a></small>
     <div class="hidden name"><code>vs2di.run.Rd</code></div>
     </div>
 
@@ -104,11 +109,11 @@
     </div>
 
     <pre class="usage"><span class='fu'>vs2di.run</span>(<span class='kw'>engine</span> <span class='kw'>=</span> <span class='st'>"vs2dh"</span>,
-  <span class='kw'>engineDirectoryWin</span> <span class='kw'>=</span> <span class='fu'>system.file</span>(<span class='st'>"extdata/engine/win"</span>, <span class='kw'>package</span> <span class='kw'>=</span>
-  <span class='st'>"kwb.vs2dh"</span>), <span class='kw'>engineDirectoryLinux</span> <span class='kw'>=</span> <span class='fu'>system.file</span>(<span class='st'>"extdata/engine/linux"</span>,
-  <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"kwb.vs2dh"</span>), <span class='kw'>model.path</span> <span class='kw'>=</span> <span class='fu'>system.file</span>(<span class='st'>"extdata"</span>,
-  <span class='st'>"vs2dh_example/tutorial2"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"kwb.vs2dh"</span>), <span class='kw'>returnOutput</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>showWarnings</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>openTargetDir</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>dbg</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+  <span class='kw'>engineDirectoryWin</span> <span class='kw'>=</span> <span class='fu'>this_extdata_file</span>(<span class='st'>"engine/win"</span>),
+  <span class='kw'>engineDirectoryLinux</span> <span class='kw'>=</span> <span class='fu'>this_extdata_file</span>(<span class='st'>"engine/linux"</span>),
+  <span class='kw'>model.path</span> <span class='kw'>=</span> <span class='fu'>this_extdata_file</span>(<span class='st'>"vs2dh_example/tutorial2"</span>),
+  <span class='kw'>returnOutput</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>showWarnings</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>openTargetDir</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>dbg</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -166,7 +171,7 @@ If <code>returnOutput</code> is TRUE the output is imported in R object</p>
 <span class='no'>res</span> <span class='kw'>&lt;-</span> <span class='fu'>vs2di.run</span>(<span class='kw'>model.path</span> <span class='kw'>=</span> <span class='no'>model.path</span>)</div><div class='output co'>#&gt; 1. Step: Create vs2dh.fil...Done!
 #&gt; 
 #&gt; 
-#&gt; 2. Step: Run model...finished after 21.0 seconds
+#&gt; 2. Step: Run model...finished after  4.7 seconds
 #&gt; 
 #&gt; 4. Step: Import model results...Done!
 #&gt; 

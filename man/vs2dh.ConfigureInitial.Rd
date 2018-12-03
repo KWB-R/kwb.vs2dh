@@ -8,8 +8,9 @@ vs2dh.ConfigureInitial(flow = vs2dh.ConfigureInitialFlow(),
   temp = vs2dh.ConfigureInitialTemp())
 }
 \arguments{
-\item{flow}{initial flow conditions (i.e. pressure head or saturation distribution
-for model domains, as retrieved by vs2dh.ConfigureInitialFlow()}
+\item{flow}{initial flow conditions (i.e. pressure head or saturation
+distribution for model domains, as retrieved by
+vs2dh.ConfigureInitialFlow()}
 
 \item{temp}{initial temperature distribution as retrieved by
 vs2dh.ConfigureInitialTemp()}

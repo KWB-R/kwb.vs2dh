@@ -79,7 +79,12 @@
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/KWB-R/kwb.vs2dh/">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -93,7 +98,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Helper function: prepareImport (imports and prepares input file)</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/KWB-R/kwb.vs2dh//blob/master/R/vs2dhReadConfig.R'><code>R/vs2dhReadConfig.R</code></a></small>
     <div class="hidden name"><code>prepareImport.Rd</code></div>
     </div>
 
@@ -135,9 +140,11 @@ each recharge period)</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>model.path</span> <span class='kw'>&lt;-</span> <span class='fu'>system.file</span>(<span class='st'>"extdata"</span>, <span class='st'>"vs2dh_example/tutorial2"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"kwb.vs2dh"</span>)
-<span class='fu'>prepareImport</span>(<span class='no'>model.path</span>)</div><div class='output co'>#&gt; Importing parameter description from file 'C:/Users/mrustl.KWB/Documents/RProjects/kwb.vs2dh.git/trunk/inst/extdata/InputDescription.xls'....
-#&gt; </div><div class='output co'>#&gt; <span class='error'>Error in RODBC::odbcConnectExcel(db, ...): odbcConnectExcel is only usable with 32-bit Windows</span></div></pre>
+    <pre class="examples"><span class='co'># NOT RUN {</span>
+<span class='no'>model.path</span> <span class='kw'>&lt;-</span> <span class='fu'>system.file</span>(<span class='st'>"extdata"</span>, <span class='st'>"vs2dh_example/tutorial2"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"kwb.vs2dh"</span>)
+<span class='fu'>prepareImport</span>(<span class='no'>model.path</span>)
+<span class='co'># }</span><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

@@ -8,13 +8,13 @@ vs2dh.ConfigureObsPoints(obs_n = NULL, obs_j = NULL,
   outputEachTimeStep = TRUE)
 }
 \arguments{
-\item{obs_n}{grid column "n" (if NULL no observation points will be written to file
-obsPoints.out)}
+\item{obs_n}{grid column "n" (if NULL no observation points will be written
+to file obsPoints.out)}
 
-\item{obs_j}{grid row "j" (if NULL no observation points will be written to file
-obsPoints.out)}
+\item{obs_j}{grid row "j" (if NULL no observation points will be written to
+file obsPoints.out)}
 
-\item{outputEachTimeStep}{If FALSE output to obsPoints.out is desired only at 
+\item{outputEachTimeStep}{If FALSE output to obsPoints.out is desired only at
 selected output times rather than at each time step (default: TRUE)}
 }
 \value{

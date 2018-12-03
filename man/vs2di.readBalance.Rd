@@ -4,7 +4,8 @@
 \alias{vs2di.readBalance}
 \title{Read VS2dh model output file with (energy, fluid) mass balance time series}
 \usage{
-vs2di.readBalance(model.path, engine, fileName = "balance.out", dbg = TRUE)
+vs2di.readBalance(model.path, engine, fileName = "balance.out",
+  dbg = TRUE)
 }
 \arguments{
 \item{model.path}{full path to folder containing model output files}
@@ -29,4 +30,5 @@ wDir <- system.file(package = "kwb.vs2dh")
 model.path <- file.path(wDir, "extdata/vs2dh_example/tutorial2")
 res <- vs2di.run(model.path = model.path) 
 vs2di.readBalance(model.path = model.path, engine = "vs2dh")
+
 }

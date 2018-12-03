@@ -4,27 +4,28 @@
 \alias{vs2dh.ConfigureInitialFlow}
 \title{Configure initial head/soil moisture distribution}
 \usage{
-vs2dh.ConfigureInitialFlow(values = NA, dwtx = 3.7291667, hmin = -3.98,
-  asPressureHeads = TRUE)
+vs2dh.ConfigureInitialFlow(values = NA, dwtx = 3.7291667,
+  hmin = -3.98, asPressureHeads = TRUE)
 }
 \arguments{
-\item{values}{If NA values are supplied (default): initial conditions are defined 
-in terms of pressure head, and an equilibrium profile is specified above a free-water 
-surface at a depth of DWTX until a pressure head of HMIN is reached. All 
-pressure heads above this are set to HMIN. If one value is supplied: all 
-initial conditions in terms of pressure head (if asPressureHead=TRUE) or
-moisture(if asPressureHead=FALSE) are set equal to value of "hvalues".}
+\item{values}{If NA values are supplied (default): initial conditions are
+defined in terms of pressure head, and an equilibrium profile is specified
+above a free-water surface at a depth of DWTX until a pressure head of HMIN
+is reached. All pressure heads above this are set to HMIN. If one value is
+supplied: all initial conditions in terms of pressure head (if
+asPressureHead=TRUE) or moisture(if asPressureHead=FALSE) are set equal to
+value of "hvalues".}
 
-\item{dwtx}{Depth to free-water surface above which an equilibrium profile 
-is computed, L. All All pressure heads above DWTX this are set to HMIN. 
+\item{dwtx}{Depth to free-water surface above which an equilibrium profile
+is computed, L. All All pressure heads above DWTX this are set to HMIN.
 (default: 3.7291667)}
 
-\item{hmin}{Minimum pressure head to limit height of equilibrium profile, L. 
-Must be negative. (default: -3.98)
-matrix (with columns equal to NXR and rows equals to NLY) needs to be supplied}
+\item{hmin}{Minimum pressure head to limit height of equilibrium profile, L.
+Must be negative. (default: -3.98) matrix (with columns equal to NXR and
+rows equals to NLY) needs to be supplied}
 
-\item{asPressureHeads}{If TRUE, initial flow conditions are pressure heads, else: 
-moisture content (default: TRUE)}
+\item{asPressureHeads}{If TRUE, initial flow conditions are pressure heads,
+else: moisture content (default: TRUE)}
 }
 \value{
 Initial flow conditions

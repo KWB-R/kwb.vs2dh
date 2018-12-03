@@ -7,11 +7,12 @@
 vs2dh.ConfigureBalance(mb9 = c(1:72), outputEachTimeStep = TRUE)
 }
 \arguments{
-\item{mb9}{The index number of each mass balance component to be written to 
+\item{mb9}{The index number of each mass balance component to be written to
 file "balance.out".(See table 7, from p. 66, in Healy (1990)}
 
-\item{outputEachTimeStep}{FALSE if output to file 9 ("balance.out") is desired 
-only at selected output times rather than at each time step (default: TRUE)}
+\item{outputEachTimeStep}{FALSE if output to file 9 ("balance.out") is
+desired only at selected output times rather than at each time step
+(default: TRUE)}
 }
 \value{
 Selected components and temporal resolution for "balance.out" file

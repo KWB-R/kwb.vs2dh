@@ -79,7 +79,12 @@
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/KWB-R/kwb.vs2dh/">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -93,7 +98,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Configure model output</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/KWB-R/kwb.vs2dh//blob/master/R/vs2dhConfigure.R'><code>R/vs2dhConfigure.R</code></a></small>
     <div class="hidden name"><code>vs2dh.ConfigureBasicOutput.Rd</code></div>
     </div>
 
@@ -123,27 +128,28 @@
     </tr>
     <tr>
       <th>variables</th>
-      <td><p>If TRUE output of pressure heads (and temperatures if TRANS = T)
-to file "variables.out" is desired at selected observation times (default: TRUE)</p></td>
+      <td><p>If TRUE output of pressure heads (and temperatures if TRANS
+= T) to file "variables.out" is desired at selected observation times
+(default: TRUE)</p></td>
     </tr>
     <tr>
       <th>balance</th>
-      <td><p>IF TRUE one-line mass balance summary for each time step is 
+      <td><p>IF TRUE one-line mass balance summary for each time step is
 written to file "balance.out"; (default: TRUE)</p></td>
     </tr>
     <tr>
       <th>obsPoints</th>
-      <td><p>as retrieved by  vs2dh.ConfigureObsPoints(), default: no output
-of observation points to file "obsPoints.out"</p></td>
+      <td><p>as retrieved by  vs2dh.ConfigureObsPoints(), default: no
+output of observation points to file "obsPoints.out"</p></td>
     </tr>
     <tr>
       <th>boundaryFluxes</th>
-      <td><p>as retrieved by vs2dh.ConfigureBoundaryFluxes(), default:
-no output of boundary fluxes to file "boundaryFluxes.out"</p></td>
+      <td><p>as retrieved by vs2dh.ConfigureBoundaryFluxes(),
+default: no output of boundary fluxes to file "boundaryFluxes.out"</p></td>
     </tr>
     <tr>
       <th>enhancedPrecision</th>
-      <td><p>If TRUE results are written with enhanced precision 
+      <td><p>If TRUE results are written with enhanced precision
 to files9 ("variables.out") and file11 ("obsPoints.out"), (default: FALSE)</p></td>
     </tr>
     </table>

@@ -9,18 +9,19 @@ vs2dh.ConfigureSoils(props = list(vs2dh.ConfigureSoil(),
   grid = vs2dh.ConfigureSoilGrid(ntex = length(props)), wus = 0.5)
 }
 \arguments{
-\item{props}{Soil (flow & transport) properties as retrieved by \code{vs2dh.ConfigureSoil()} 
-ordered by itex number, i.e. first list element = itex1, second = itex2}
+\item{props}{Soil (flow & transport) properties as retrieved by
+\code{vs2dh.ConfigureSoil()} ordered by itex number, i.e. first list
+element = itex1, second = itex2}
 
 \item{grid}{grid matrix as retrieved by \code{vs2dh.ConfigureSoilGrid}}
 
-\item{wus}{Weighting option for intercell relative hydraulic conductivity: 1 
-(for full upstream weighting), 0.5 (for arithmetic mean) and 0.0 (for geometric 
-mean), (default: 0.5)}
+\item{wus}{Weighting option for intercell relative hydraulic conductivity: 1
+(for full upstream weighting), 0.5 (for arithmetic mean) and 0.0 (for
+geometric mean), (default: 0.5)}
 }
 \value{
 Configuration of soils for flow and energy transport (only hydraulic
-function type 1 vanGenuchten model is implemented!)
+  function type 1 vanGenuchten model is implemented!)
 }
 \description{
 Configure Soils

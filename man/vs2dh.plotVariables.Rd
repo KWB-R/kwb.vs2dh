@@ -5,8 +5,8 @@
 \title{Plot vs2dh.plotVariables matrix time series}
 \usage{
 vs2dh.plotVariables(para = "Temp", data, ignoreBoundary = TRUE,
-  ignoreZeroValues = TRUE, paraLabel = NULL, maxCol = 100, main = "",
-  nodes = TRUE, ...)
+  ignoreZeroValues = TRUE, paraLabel = NULL, maxCol = 100,
+  main = "", nodes = TRUE, ...)
 }
 \arguments{
 \item{para}{either "Temp" (for temperature) or "PressureHead"}

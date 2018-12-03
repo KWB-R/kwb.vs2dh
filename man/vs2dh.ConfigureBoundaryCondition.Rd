@@ -5,7 +5,8 @@
 \title{Configure boundary conditions}
 \usage{
 vs2dh.ConfigureBoundaryCondition(jj = 5, nn = 17:26, ntx = 2,
-  pfdum = 0.009778035, ntc = 0, cf = 10, importData = NULL, ibc = 0)
+  pfdum = 0.009778035, ntc = 0, cf = 10, importData = NULL,
+  ibc = 0)
 }
 \arguments{
 \item{jj}{vector with row numbers of nodes}

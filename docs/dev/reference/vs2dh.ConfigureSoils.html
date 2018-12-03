@@ -79,7 +79,12 @@
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/KWB-R/kwb.vs2dh/">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -93,7 +98,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Configure Soils</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/KWB-R/kwb.vs2dh//blob/master/R/vs2dhConfigure.R'><code>R/vs2dhConfigure.R</code></a></small>
     <div class="hidden name"><code>vs2dh.ConfigureSoils.Rd</code></div>
     </div>
 
@@ -112,8 +117,9 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>props</th>
-      <td><p>Soil (flow &amp; transport) properties as retrieved by <code><a href='vs2dh.ConfigureSoil.html'>vs2dh.ConfigureSoil()</a></code> 
-ordered by itex number, i.e. first list element = itex1, second = itex2</p></td>
+      <td><p>Soil (flow &amp; transport) properties as retrieved by
+<code><a href='vs2dh.ConfigureSoil.html'>vs2dh.ConfigureSoil()</a></code> ordered by itex number, i.e. first list
+element = itex1, second = itex2</p></td>
     </tr>
     <tr>
       <th>grid</th>
@@ -121,16 +127,16 @@ ordered by itex number, i.e. first list element = itex1, second = itex2</p></td>
     </tr>
     <tr>
       <th>wus</th>
-      <td><p>Weighting option for intercell relative hydraulic conductivity: 1 
-(for full upstream weighting), 0.5 (for arithmetic mean) and 0.0 (for geometric 
-mean), (default: 0.5)</p></td>
+      <td><p>Weighting option for intercell relative hydraulic conductivity: 1
+(for full upstream weighting), 0.5 (for arithmetic mean) and 0.0 (for
+geometric mean), (default: 0.5)</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>Configuration of soils for flow and energy transport (only hydraulic
-function type 1 vanGenuchten model is implemented!)</p>
+  function type 1 vanGenuchten model is implemented!)</p>
     
 
   </div>

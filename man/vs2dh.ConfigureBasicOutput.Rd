@@ -16,19 +16,20 @@ vs2dh.ConfigureBasicOutput(times = vs2dh.ConfigureBasicOutputTimes(),
 
 \item{main}{as retrieved by \code{vs2dh.ConfigureBasicOutputMain()}}
 
-\item{variables}{If TRUE output of pressure heads (and temperatures if TRANS = T)
-to file "variables.out" is desired at selected observation times (default: TRUE)}
+\item{variables}{If TRUE output of pressure heads (and temperatures if TRANS
+= T) to file "variables.out" is desired at selected observation times
+(default: TRUE)}
 
-\item{balance}{IF TRUE one-line mass balance summary for each time step is 
+\item{balance}{IF TRUE one-line mass balance summary for each time step is
 written to file "balance.out"; (default: TRUE)}
 
-\item{obsPoints}{as retrieved by  vs2dh.ConfigureObsPoints(), default: no output
-of observation points to file "obsPoints.out"}
+\item{obsPoints}{as retrieved by  vs2dh.ConfigureObsPoints(), default: no
+output of observation points to file "obsPoints.out"}
 
-\item{boundaryFluxes}{as retrieved by vs2dh.ConfigureBoundaryFluxes(), default:
-no output of boundary fluxes to file "boundaryFluxes.out"}
+\item{boundaryFluxes}{as retrieved by vs2dh.ConfigureBoundaryFluxes(),
+default: no output of boundary fluxes to file "boundaryFluxes.out"}
 
-\item{enhancedPrecision}{If TRUE results are written with enhanced precision 
+\item{enhancedPrecision}{If TRUE results are written with enhanced precision
 to files9 ("variables.out") and file11 ("obsPoints.out"), (default: FALSE)}
 }
 \value{

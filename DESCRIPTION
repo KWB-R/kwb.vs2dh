@@ -9,8 +9,15 @@ Depends: R (>= 3.0.0), stringr, lattice, colorRamps, kwb.utils, kwb.db
 Remotes: 
    github::kwb-r/kwb.utils,
    github::kwb-r/kwb.db
+BinaryFiles: 
+   inst/extdata/engine/linux/vs2dh3_3.exe,
+   inst/extdata/engine/win/vs2dh3_3.exe,
+   inst/extdata/engine/win/vs2dt3_3.exe
 License: MIT + file LICENSE
+Encoding: UTF-8
 LazyLoad: yes
 URL: https://github.com/KWB-R/kwb.vs2dh/
 BugReports: https://github.com/KWB-R/kwb.vs2dh/issues
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.0
+Suggests: 
+    testthat

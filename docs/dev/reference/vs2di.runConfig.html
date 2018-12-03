@@ -79,7 +79,12 @@
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/KWB-R/kwb.vs2dh/">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -93,7 +98,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Run configuration with VS2dh model</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/KWB-R/kwb.vs2dh//blob/master/R/vs2dhRunModel.R'><code>R/vs2dhRunModel.R</code></a></small>
     <div class="hidden name"><code>vs2di.runConfig.Rd</code></div>
     </div>
 
@@ -159,7 +164,8 @@ screen (default: TRUE)</p></td>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>### Testing import and writing functions with </span>
+    <pre class="examples"><span class='co'># NOT RUN {</span>
+<span class='co'>### Testing import and writing functions with </span>
 <span class='co'>### Folder which contains the subfolders with the different models to test: </span>
 <span class='no'>model.main.path</span> <span class='kw'>&lt;-</span> <span class='fu'>system.file</span>(<span class='st'>"extdata"</span>, <span class='st'>"vs2dh_example"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"kwb.vs2dh"</span>)
 <span class='co'>#### Using vs2dh.dat file contained in subfolders example1, example2, tutorial1</span>
@@ -185,9 +191,8 @@ screen (default: TRUE)</p></td>
                      <span class='kw'>main</span> <span class='kw'>=</span> <span class='no'>testModel</span>  <span class='co'>### nice label by using model folder name</span>
                     )
   <span class='fu'>cat</span>(<span class='st'>"Done!"</span>)
-}</div><div class='output co'>#&gt; Testing model in C:/Users/mrustl.KWB/Documents/RProjects/kwb.vs2dh.git/trunk/inst/extdata/vs2dh_example/example1
-#&gt; 1.Step: importing configuration to R.....Importing parameter description from file 'C:/Users/mrustl.KWB/Documents/RProjects/kwb.vs2dh.git/trunk/inst/extdata/InputDescription.xls'....
-#&gt; </div><div class='output co'>#&gt; <span class='error'>Error in RODBC::odbcConnectExcel(db, ...): odbcConnectExcel is only usable with 32-bit Windows</span></div></pre>
+}
+<span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

@@ -79,7 +79,12 @@
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/KWB-R/kwb.vs2dh/">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -93,7 +98,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Read VS2dh model output file with (energy, fluid) mass balance time series</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/KWB-R/kwb.vs2dh//blob/master/R/vs2dhReadOutput.R'><code>R/vs2dhReadOutput.R</code></a></small>
     <div class="hidden name"><code>vs2di.readBalance.Rd</code></div>
     </div>
 
@@ -103,7 +108,8 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>vs2di.readBalance</span>(<span class='no'>model.path</span>, <span class='no'>engine</span>, <span class='kw'>fileName</span> <span class='kw'>=</span> <span class='st'>"balance.out"</span>, <span class='kw'>dbg</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>vs2di.readBalance</span>(<span class='no'>model.path</span>, <span class='no'>engine</span>, <span class='kw'>fileName</span> <span class='kw'>=</span> <span class='st'>"balance.out"</span>,
+  <span class='kw'>dbg</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -140,7 +146,7 @@ flow &amp; solute transport) (Default: no default)</p></td>
 <span class='no'>res</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='vs2di.run.html'>vs2di.run</a></span>(<span class='kw'>model.path</span> <span class='kw'>=</span> <span class='no'>model.path</span>)</div><div class='output co'>#&gt; 1. Step: Create vs2dh.fil...Done!
 #&gt; 
 #&gt; 
-#&gt; 2. Step: Run model...finished after 20.6 seconds
+#&gt; 2. Step: Run model...finished after  4.6 seconds
 #&gt; 
 #&gt; 4. Step: Import model results...Done!
 #&gt; 
@@ -3475,7 +3481,8 @@ flow &amp; solute transport) (Default: no default)</p></td>
 #&gt; 189            -3.984e+04
 #&gt; 190            -4.001e+03
 #&gt; 191            -3.920e+04
-#&gt; 192            -3.864e+04</div></pre>
+#&gt; 192            -3.864e+04</div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

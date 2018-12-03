@@ -2,8 +2,8 @@
 % Please edit documentation in R/vs2dhConvertToFortran.R
 \name{leafValues}
 \alias{leafValues}
-\title{Helper function: names of all sublists of a list returns the names
-of all sublists of \emph{x} in the "$"-notation, e.g.
+\title{Helper function: names of all sublists of a list returns the names of all
+sublists of \emph{x} in the "$"-notation, e.g.
 list$sublist$subsublist$subsubsublist}
 \usage{
 leafValues(x, values = list())
@@ -17,7 +17,7 @@ leafValues(x, values = list())
 leafs of sublists into one dimensional list
 }
 \description{
-Helper function: names of all sublists of a list returns the names
-of all sublists of \emph{x} in the "$"-notation, e.g.
+Helper function: names of all sublists of a list returns the names of all
+sublists of \emph{x} in the "$"-notation, e.g.
 list$sublist$subsublist$subsubsublist
 }

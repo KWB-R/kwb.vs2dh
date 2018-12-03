@@ -12,15 +12,16 @@ vs2dh.ConfigureTrans(alphaL = 1, alphaT = 0.1, cs = 2180000,
 
 \item{alphaT}{Transverse dispersivity, L. (Default: 0.1 m)}
 
-\item{cs}{Heat capacity of dry solids (Cs), Q/L3 C. (Default: 2180000.0 J/m3C)}
+\item{cs}{Heat capacity of dry solids (Cs), Q/L3 C. (Default: 2180000.0
+J/m3C)}
 
-\item{ktRmc}{Thermal conductivity of water sediment at residual moisture content, Q/LTC.
-(default: 129600.0)}
+\item{ktRmc}{Thermal conductivity of water sediment at residual moisture
+content, Q/LTC. (default: 129600.0)}
 
-\item{ktSat}{Thermal conductivity of water sediments at full saturation, Q/LC.
-(Default: 155520.0)}
+\item{ktSat}{Thermal conductivity of water sediments at full saturation,
+Q/LC. (Default: 155520.0)}
 
-\item{cw}{Heat capacity of water (Cw), which is the product of density times 
+\item{cw}{Heat capacity of water (Cw), which is the product of density times
 specific heat of water, Q/L3 C. (default: 4180000.0)}
 }
 \value{
@@ -30,5 +31,6 @@ Soil transport parameters
 Configure soil transport parameters
 }
 \seealso{
-\url{http://pubs.usgs.gov/circ/2003/circ1260/pdf/Circ1260.pdf} p.87 for default parameterisation
+\url{http://pubs.usgs.gov/circ/2003/circ1260/pdf/Circ1260.pdf} p.87
+  for default parameterisation
 }

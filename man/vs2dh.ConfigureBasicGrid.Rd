@@ -13,16 +13,17 @@ vs2dh.ConfigureBasicGrid(nxr = 46, nly = 34, ang = 0, rad = FALSE,
 \item{nly}{Number of cells in vertical direction. (default: 34)}
 
 \item{ang}{Angle by which grid is to be tilted (Must be between -90 and +90
-degrees, ang = 0 for no tilting, see Healy (1990) for further discussion), degrees.
-(default: 0)}
+degrees, ang = 0 for no tilting, see Healy (1990) for further discussion),
+degrees. (default: 0)}
 
-\item{rad}{Logical variable. TRUE if radial coordinates are used; otherwise = FALSE
-(default: FALSE)}
+\item{rad}{Logical variable. TRUE if radial coordinates are used; otherwise
+= FALSE (default: FALSE)}
 
 \item{dx}{Constant value for grid spacing in horizontal or radial direction.
 (default: 0.5)}
 
-\item{dy}{Constant value for grid spacing in vertical direction. (default: 0.5)}
+\item{dy}{Constant value for grid spacing in vertical direction. (default:
+0.5)}
 }
 \value{
 Grid parameterisation

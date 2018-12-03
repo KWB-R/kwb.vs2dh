@@ -5,8 +5,8 @@
 \title{Helper function: imports matrix values of vs2dh.dat}
 \usage{
 importMatrix(prepData, pattern = "JTEX", patternNameCol = "parNames",
-  startLineOffset = 0, msg = "B9: Importing soil matrix...", nrow = NULL,
-  dbg = TRUE)
+  startLineOffset = 0, msg = "B9: Importing soil matrix...",
+  nrow = NULL, dbg = TRUE)
 }
 \arguments{
 \item{prepData}{object as retrieved by prepareImport()}

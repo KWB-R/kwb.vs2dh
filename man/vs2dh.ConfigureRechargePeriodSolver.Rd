@@ -4,8 +4,9 @@
 \alias{vs2dh.ConfigureRechargePeriodSolver}
 \title{Configure recharge period solver}
 \usage{
-vs2dh.ConfigureRechargePeriodSolver(delt = 1e-04, tmlt = 1.2, dltmx = 1,
-  dltmin = 1e-04, tred = 0.1, dsmax = 10, sterr = 0, pond = 0)
+vs2dh.ConfigureRechargePeriodSolver(delt = 1e-04, tmlt = 1.2,
+  dltmx = 1, dltmin = 1e-04, tred = 0.1, dsmax = 10, sterr = 0,
+  pond = 0)
 }
 \arguments{
 \item{delt}{Length of initial time step for this period, T. (default: 1.0E-4)}
@@ -16,21 +17,22 @@ vs2dh.ConfigureRechargePeriodSolver(delt = 1e-04, tmlt = 1.2, dltmx = 1,
 
 \item{dltmin}{Minimum allowed length of time step, T. (default: 1.0E-4)}
 
-\item{tred}{Factor by which time-step length is reduced if convergence 
-is not obtained in ITMAX iterations. Values usually should be in the range 0.1
-to 0.5. If no reduction of time-step length is desired, input a value of 0.0.
+\item{tred}{Factor by which time-step length is reduced if convergence is not
+obtained in ITMAX iterations. Values usually should be in the range 0.1 to
+0.5. If no reduction of time-step length is desired, input a value of 0.0.
 (default: 0.1)}
 
 \item{dsmax}{Maximum allowed change in head per time step for this period, L.
 (default: 10)}
 
-\item{sterr}{Steady-state head criterion; when the maximum change in head 
-between successive time steps is less than STERR, the program assumes that 
-steady state has been reached for this period and advances to next recharge 
+\item{sterr}{Steady-state head criterion; when the maximum change in head
+between successive time steps is less than STERR, the program assumes that
+steady state has been reached for this period and advances to next recharge
 period, L. (default: 0)}
 
-\item{pond}{Maximum allowed height of ponded water for constant flux nodes. 
-See Lappala and other (1987) for detailed discussion of POND, L. (default: 0)}
+\item{pond}{Maximum allowed height of ponded water for constant flux nodes.
+See Lappala and other (1987) for detailed discussion of POND, L. (default:
+0)}
 }
 \value{
 Recharge period times

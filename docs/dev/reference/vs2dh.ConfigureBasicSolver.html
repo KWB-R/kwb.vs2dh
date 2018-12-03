@@ -79,7 +79,12 @@
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/KWB-R/kwb.vs2dh/">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -93,7 +98,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Basic solver configuration</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/KWB-R/kwb.vs2dh//blob/master/R/vs2dhConfigure.R'><code>R/vs2dhConfigure.R</code></a></small>
     <div class="hidden name"><code>vs2dh.ConfigureBasicSolver.Rd</code></div>
     </div>
 
@@ -112,22 +117,22 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>cis</th>
-      <td><p>If TRUE spatial discretisation is realised by centered-in-space 
-differencing; if FALSE backward-in-space differencing is to be used for 
+      <td><p>If TRUE spatial discretisation is realised by centered-in-space
+differencing; if FALSE backward-in-space differencing is to be used for
 transport equation. (default: TRUE)</p></td>
     </tr>
     <tr>
       <th>cit</th>
-      <td><p>If TRUE temporal discretisation is realised by centered-in-time 
-differencing; if FALSE backward-in-time or fully implicit differencing is to 
-be used. (default: TRUE)</p></td>
+      <td><p>If TRUE temporal discretisation is realised by centered-in-time
+differencing; if FALSE backward-in-time or fully implicit differencing is
+to be used. (default: TRUE)</p></td>
     </tr>
     <tr>
       <th>numt</th>
-      <td><p>Maximum number of time steps.(default: 1000). (NOTE: if enhanced 
-precision in print out to file "balance.out" and file 11 "obsPoints.out", is 
-desired set NUMT equal to a negative number. That is, multiply actual maximum 
-number of time steps by -1)1</p></td>
+      <td><p>Maximum number of time steps.(default: 1000). (NOTE: if enhanced
+precision in print out to file "balance.out" and file 11 "obsPoints.out",
+is desired set NUMT equal to a negative number. That is, multiply actual
+maximum number of time steps by -1)1</p></td>
     </tr>
     <tr>
       <th>minit</th>
@@ -144,23 +149,23 @@ number of time steps by -1)1</p></td>
     </tr>
     <tr>
       <th>eps1</th>
-      <td><p>Temperature closure criterion for iterative solution of transport 
+      <td><p>Temperature closure criterion for iterative solution of transport
 equation, C. (default: 0.001)</p></td>
     </tr>
     <tr>
       <th>eps2</th>
-      <td><p>Velocity closure criterion for outer iteration loop at each time 
+      <td><p>Velocity closure criterion for outer iteration loop at each time
 step, L/T. (default: 0.001)</p></td>
     </tr>
     <tr>
       <th>hmax</th>
-      <td><p>Relaxation parameter for iterative solution. See discussion in 
-Lappala and others (1987) for more detail. Value is generally in the range of
-0.4 to 1.2.  (default: 0.7)</p></td>
+      <td><p>Relaxation parameter for iterative solution. See discussion in
+Lappala and others (1987) for more detail. Value is generally in the range
+of 0.4 to 1.2.  (default: 0.7)</p></td>
     </tr>
     <tr>
       <th>itstop</th>
-      <td><p>If TRUE simulation is terminated after ITMAX iterations in one 
+      <td><p>If TRUE simulation is terminated after ITMAX iterations in one
 time step; otherwise = F. (default: TRUE)</p></td>
     </tr>
     </table>

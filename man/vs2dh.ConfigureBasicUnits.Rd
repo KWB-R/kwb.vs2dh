@@ -9,8 +9,8 @@ vs2dh.ConfigureBasicUnits(zunit = "m", tunit = "day", cunx = "J")
 \arguments{
 \item{zunit}{Units used for length, "m" for meters. (default: "m")}
 
-\item{tunit}{Units used for time, "sec" for seconds, "day" for day 
-(default: "day")}
+\item{tunit}{Units used for time, "sec" for seconds, "day" for day (default:
+"day")}
 
 \item{cunx}{Units used for heat, "J" for Joules. (default: "J")}
 }

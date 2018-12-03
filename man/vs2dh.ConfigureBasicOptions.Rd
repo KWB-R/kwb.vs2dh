@@ -6,7 +6,8 @@
 evapotranspiration should be simulated? (FUNCTIONALITY NOT IMPLEMENTED YET! 
 DO NOT CHANGE default PARAMETERISATION)}
 \usage{
-vs2dh.ConfigureBasicOptions(trans = TRUE, bcit = FALSE, etsim = FALSE)
+vs2dh.ConfigureBasicOptions(trans = TRUE, bcit = FALSE,
+  etsim = FALSE)
 }
 \arguments{
 \item{trans}{Should energy transport be simulated? (default: TRUE), Option

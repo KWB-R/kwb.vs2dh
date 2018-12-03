@@ -79,7 +79,12 @@
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/KWB-R/kwb.vs2dh/">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -93,7 +98,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Configure initial head/soil moisture distribution</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/KWB-R/kwb.vs2dh//blob/master/R/vs2dhConfigure.R'><code>R/vs2dhConfigure.R</code></a></small>
     <div class="hidden name"><code>vs2dh.ConfigureInitialFlow.Rd</code></div>
     </div>
 
@@ -103,37 +108,38 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>vs2dh.ConfigureInitialFlow</span>(<span class='kw'>values</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>dwtx</span> <span class='kw'>=</span> <span class='fl'>3.7291667</span>, <span class='kw'>hmin</span> <span class='kw'>=</span> -<span class='fl'>3.98</span>,
-  <span class='kw'>asPressureHeads</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>vs2dh.ConfigureInitialFlow</span>(<span class='kw'>values</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>dwtx</span> <span class='kw'>=</span> <span class='fl'>3.7291667</span>,
+  <span class='kw'>hmin</span> <span class='kw'>=</span> -<span class='fl'>3.98</span>, <span class='kw'>asPressureHeads</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>values</th>
-      <td><p>If NA values are supplied (default): initial conditions are defined 
-in terms of pressure head, and an equilibrium profile is specified above a free-water 
-surface at a depth of DWTX until a pressure head of HMIN is reached. All 
-pressure heads above this are set to HMIN. If one value is supplied: all 
-initial conditions in terms of pressure head (if asPressureHead=TRUE) or
-moisture(if asPressureHead=FALSE) are set equal to value of "hvalues".</p></td>
+      <td><p>If NA values are supplied (default): initial conditions are
+defined in terms of pressure head, and an equilibrium profile is specified
+above a free-water surface at a depth of DWTX until a pressure head of HMIN
+is reached. All pressure heads above this are set to HMIN. If one value is
+supplied: all initial conditions in terms of pressure head (if
+asPressureHead=TRUE) or moisture(if asPressureHead=FALSE) are set equal to
+value of "hvalues".</p></td>
     </tr>
     <tr>
       <th>dwtx</th>
-      <td><p>Depth to free-water surface above which an equilibrium profile 
-is computed, L. All All pressure heads above DWTX this are set to HMIN. 
+      <td><p>Depth to free-water surface above which an equilibrium profile
+is computed, L. All All pressure heads above DWTX this are set to HMIN.
 (default: 3.7291667)</p></td>
     </tr>
     <tr>
       <th>hmin</th>
-      <td><p>Minimum pressure head to limit height of equilibrium profile, L. 
-Must be negative. (default: -3.98)
-matrix (with columns equal to NXR and rows equals to NLY) needs to be supplied</p></td>
+      <td><p>Minimum pressure head to limit height of equilibrium profile, L.
+Must be negative. (default: -3.98) matrix (with columns equal to NXR and
+rows equals to NLY) needs to be supplied</p></td>
     </tr>
     <tr>
       <th>asPressureHeads</th>
-      <td><p>If TRUE, initial flow conditions are pressure heads, else: 
-moisture content (default: TRUE)</p></td>
+      <td><p>If TRUE, initial flow conditions are pressure heads,
+else: moisture content (default: TRUE)</p></td>
     </tr>
     </table>
     

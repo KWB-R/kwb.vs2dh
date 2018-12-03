@@ -7,17 +7,15 @@
 vs2dh.ConfigureSeepageFace(j = c(30:20), n = 2, jlast = 0)
 }
 \arguments{
-\item{j}{Row and column of each cell on possible seepage face, 
-in order from the lowest to the highest elevation; JJ pairs of 
-values are required.}
+\item{j}{Row and column of each cell on possible seepage face, in order from
+the lowest to the highest elevation; JJ pairs of values are required.}
 
-\item{n}{Column of each cell on possible seepage face, 
-in order from the lowest to the highest elevation; JJ pairs of 
-values are required.}
+\item{n}{Column of each cell on possible seepage face, in order from the
+lowest to the highest elevation; JJ pairs of values are required.}
 
-\item{jlast}{Number of the node which initially represents the highest node 
-of the seep; value can range from 0 (bottom of the face) up to JJ (top of the 
-face). (default: 0)}
+\item{jlast}{Number of the node which initially represents the highest node
+of the seep; value can range from 0 (bottom of the face) up to JJ (top of
+the face). (default: 0)}
 }
 \value{
 Seepage face

@@ -9,15 +9,17 @@ vs2dh.Configure(basic = vs2dh.ConfigureBasic(),
   recharge = vs2dh.ConfigureRechargePeriods())
 }
 \arguments{
-\item{basic}{parameterisation (title, units, time, output, solver, grid, options), 
-as retrieved by  vs2dh.ConfigureBasic(),}
+\item{basic}{parameterisation (title, units, time, output, solver, grid,
+options), as retrieved by  vs2dh.ConfigureBasic(),}
 
 \item{soils}{retrieved by vs2dh.ConfigureSoils()}
 
-\item{initial}{initial conditions for flow (pressure head or moisture contents and transport 
-(temperatures), as retrieved by  vs2dh.ConfigureInitial()}
+\item{initial}{initial conditions for flow (pressure head or moisture
+contents and transport (temperatures), as retrieved by
+vs2dh.ConfigureInitial()}
 
-\item{recharge}{recharge periods as retrieved by vs2dh.ConfigureRechargePeriods()}
+\item{recharge}{recharge periods as retrieved by
+vs2dh.ConfigureRechargePeriods()}
 }
 \value{
 Complete vs2dh parameterisation in R style
