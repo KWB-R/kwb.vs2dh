@@ -1,8 +1,8 @@
 [![Appveyor build Status](https://ci.appveyor.com/api/projects/status/github/KWB-R/kwb.vs2dh?branch=master&svg=true)](https://ci.appveyor.com/project/KWB-R/kwb-vs2dh/branch/master)
 [![Travis build Status](https://travis-ci.org/KWB-R/kwb.vs2dh.svg?branch=master)](https://travis-ci.org/KWB-R/kwb.vs2dh)
 [![codecov](https://codecov.io/github/KWB-R/kwb.vs2dh/branch/master/graphs/badge.svg)](https://codecov.io/github/KWB-R/kwb.vs2dh)
-[![Project Status](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
-[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/kwb.vs2dh)]()
+url
+[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/<pkgname>)]()
 
 # kwb.vs2dh
 
