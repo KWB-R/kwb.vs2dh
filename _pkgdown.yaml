@@ -1,4 +1,6 @@
 authors:
+  Michael Rustler: 
+    href: https://mrustl.de
   Kompetenzzentrum Wasser Berlin gGmbH:
     href: http://www.kompetenz-wasser.de
     html: <img src="http://www.kompetenz-wasser.de/wp-content/uploads/2017/08/cropped-logo-kwb_klein-new.png" height="24" />
@@ -6,7 +8,9 @@ authors:
 template:
   params:
     bootswatch: cerulean
-
+    docsearch: 
+      api_key: ea06585c2f250efcd3fe8457dea45d53
+      index_name: kwb_vs2dh
 development:
   mode: auto
 
