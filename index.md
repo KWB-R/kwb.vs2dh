@@ -9,7 +9,7 @@ Interface to the open-source model USGS model VS2DH for simulation of water and 
 
 For more details on how to install KWB-R packages checkout our [installation tutorial](https://kwb-r.github.io/kwb.pkgbuild/articles/install.html).
 
-```{r echo = TRUE, eval = FALSE}
+```r
 ### Option: specify GitHub Personal Access Token (GITHUB_PAT)
 ### see: https://kwb-r.github.io/kwb.pkgbuild/articles/install.html#set-your-github_pat
 ### why this might be important for you!
@@ -20,9 +20,7 @@ if (!require("remotes")) {
 install.packages("remotes", repos = "https://cloud.r-project.org")
 }
 
-### Temporal workaround to due bug in latest CRAN of R package remotes v2.0.2
-### on Windows(for details: see https://github.com/r-lib/remotes/issues/248)
+# Install KWB package 'kwb.vs2dh' from GitHub
 
-remotes::install_github("r-lib/remotes@18c7302637053faf21c5b025e1e9243962db1bdc")
-remotes::install_github("KWB-R/kwb.vs2dh")
+remotes::install_github("kwb-r/kwb.vs2dh")
 ```
